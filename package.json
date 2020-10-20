@@ -1,0 +1,56 @@
+{
+  "name": "selection-range-enhancer",
+  "version": "0.0.1-beta5",
+  "description": "Helpers to work with window.Selection and Range. Allows to subscribe, find intersections, set and remove selections",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "types": "./lib",
+  "sideEffects": false,
+  "scripts": {
+    "build": "eslint \"src/**.ts\" && rm -rf ./lib/* ./esm/* && yarn build:cjs && yarn build:es",
+    "build:cjs": "tsc",
+    "build:es": "tsc -m esNext --outDir esm"
+  },
+  "engines": {
+    "node": ">= 10.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/xnimorz/selection-range-enhancer.git"
+  },
+  "keywords": [
+    "selection",
+    "range",
+    "selection-subscribe",
+    "handle-selection",
+    "caret"
+  ],
+  "author": "Nik Mostovoy (nik.mostovoy@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xnimorz/selection-range-enhancer/issues"
+  },
+  "files": [
+    "esm",
+    "lib"
+  ],
+  "homepage": "https://github.com/xnimorz/selection-range-enhancer#readme",
+  "devDependencies": {
+    "@types/node": "^12.0.4",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "prettier": "^1.17.1",
+    "typescript": "^3.5.1"
+  },
+  "resolutions": {
+    "kind-of": "6.0.3"
+  }
+}
