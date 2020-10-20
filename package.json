@@ -1,6 +1,6 @@
 {
   "name": "selection-range-enhancer",
-  "version": "0.0.1-beta5",
+  "version": "1.0.0",
   "description": "Helpers to work with window.Selection and Range. Allows to subscribe, find intersections, set and remove selections",
   "main": "lib/index.js",
   "module": "esm/index.js",
