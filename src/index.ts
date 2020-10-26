@@ -23,30 +23,42 @@ export function track(
     kind: string,
     measure: (
       selection: Selection,
-      additional?: { kind?: string; reason?: string }
+      additional?: { kind?: string; reason?: string; originalEvent: Event }
     ) => unknown
   ) {
     // TODO: maybe it's worth to substract selection from htmlElement
     let tracking = false;
     return {
-      down() {
+      down(e: Event) {
         tracking = true;
         if (config.trackDynamically) {
-          measure(window.getSelection(), { kind, reason: 'down' });
+          measure(window.getSelection(), {
+            kind,
+            reason: 'down',
+            originalEvent: e,
+          });
         }
       },
-      move() {
+      move(e: Event) {
         if (tracking) {
           if (config.trackDynamically) {
-            measure(window.getSelection(), { kind, reason: 'move' });
+            measure(window.getSelection(), {
+              kind,
+              reason: 'move',
+              originalEvent: e,
+            });
           }
         }
       },
-      up() {
+      up(e: Event) {
         if (tracking) {
           tracking = false;
 
-          measure(window.getSelection(), { kind, reason: 'up' });
+          measure(window.getSelection(), {
+            kind,
+            reason: 'up',
+            originalEvent: e,
+          });
         }
       },
     };
@@ -134,6 +146,8 @@ export function select(config: {
     config.endNode ?? config.startNode,
     config.endOffset ?? config.startOffset ?? 0
   );
+  document.getSelection().addRange(range);
+  
 }
 
 /**
