@@ -114,7 +114,7 @@ export function track(
 
   return () => {
     dispose.forEach(([eventName, handler]) => {
-      element.removeEventListener(eventName, handler);
+      element.removeEventListener(eventName, handler, !config.useBubbling);
     });
   };
 }
@@ -147,7 +147,6 @@ export function select(config: {
     config.endOffset ?? config.startOffset ?? 0
   );
   document.getSelection().addRange(range);
-  
 }
 
 /**
